@@ -14,10 +14,6 @@ class Libro():
     def agregarCopias(self, cantidadcopias):
         if(cantidadcopias > 0):
             self.nocopias += cantidadcopias
-        else:
-            return{
-
-            }
     
     def restarCopias(self):
         self.nocopias = self.nocopias - 1
