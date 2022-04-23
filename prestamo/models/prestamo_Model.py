@@ -3,10 +3,46 @@ from uuid import uuid4;
 class Prestamo():
     def __init__(self, CUI, nombre, apellido, isbn, titulo, fechaparaprestamo, fechadevolucion):
         self.uuid = uuid4()
-        self.cui = cui
+        self.CUI = CUI
         self.nombre = nombre
         self.apellido = apellido
         self.isbn = isbn
         self.titulo = titulo
         self.fechaparaprestamo = fechaparaprestamo
         self.fechadevolucion = fechadevolucion
+
+    def getCUI(self):
+        return self.CUI
+
+    def getnombre(self):
+        return self.nombre
+
+    def getapellido(self):
+        return self.apellido
+
+    def getisbn(self):
+        return self.isbn
+
+    def getitulo(self):
+        return self.titulo
+
+    def getfechaparaprestamo(self):
+        return self.fechaparaprestamo
+
+    def getfechadevolucion(self):
+        return self.fechadevolucion
+
+    def putfechadevuelta(self, fecha):
+        self.fechadevolucion = fecha
+
+    def getdata(self):
+        return{
+            "uuid": self.uuid,
+            "cui": self.CUI,
+            "nombre": self.nombre,
+            "apellido": self.apellido,
+            "isbn": self.isbn,
+            "fechaparaprestamo": self.fechaparaprestamo,
+            "fechadevolucion": self.fechadevolucion
+
+    }    
