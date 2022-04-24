@@ -1,15 +1,13 @@
 class Libro():
 
-    def __init__(self, isbn, autor, año, titulo, edicion, temas, nocopias, estanteria, fila):
+    def __init__(self, isbn, author, title, year, no_copies, no_available_copies):
         self.isbn = isbn
-        self.autor = autor
-        self.año = año
-        self.titulo = titulo
-        self.edicion = edicion
-        self.temas = temas
-        self.nocopias = nocopias
-        self.estanteria = estanteria
-        self.fila = fila
+        self.author = author
+        self.title = title
+        self.year = year
+        self.no_copies = no_copies
+        self.no_available_copies = no_available_copies
+
 
     def agregarCopias(self, cantidadcopias):
         if(cantidadcopias > 0):
@@ -21,45 +19,34 @@ class Libro():
     def devolverCopia(self):
         self.nocopias = self.nocopias + 1
 
-    def getIsbn(self):
+    def getisbn(self):
         return self.isbn
     
-    def getAutor(self):
-        return self.autor
+    def getauthor(self):
+        return self.author
 
-    def getAño(self):
-        return self.año
+    def gettitle(self):
+        return self.title
 
-    def getTitulo(self):
-        return self.titulo
+    def getyear(self):
+        return self.year
 
-    def getEdicion(self):
-        return self.edicion
-    
-    def getTemas(self):
-        return self.temas
-    
-    def getNoCopias(self):
-        return self.nocopias
+    def getno_copies(self):
+        return self.no_copies
 
-    def getEstanteria(self):
-        return self.estanteria
+    def getno_available_copies(self):
+        return self.no_available_copies
 
-    def getFila(self):
-        return self.fila
 
 
     def getData(self):
         return {
             "isbn": self.isbn,
-            "autor": self.autor,
-            "año": self.año,
-            "titulo": self.titulo,
-            "edicion": self.edicion,
-            "temas": self.temas,
-            "copias": self.nocopias,
-            "estanteria": self.estanteria,
-            "fila": self.fila
+            "author": self.author,
+            "title": self.title,
+            "year": self.year,
+            "no_copies": self.no_copies,
+            "no_available_copies": self.no_available_copies,
 
         }
 

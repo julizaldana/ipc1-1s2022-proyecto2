@@ -1,8 +1,8 @@
 class Prestamista():
-    def __init__(self, CUI, nombre, apellido):
-        self.CUI = CUI
-        self.nombre = nombre
-        self.apellido = apellido
+    def __init__(self, cui, first_name, last_name):
+        self.cui = cui
+        self.first_name = first_name
+        self.last_name = last_name
     
     def prestarLibros(self):
         global libroprestado
@@ -12,20 +12,20 @@ class Prestamista():
         global libroprestado
         libroprestado = False
 
-    def getCUI(self):
-        return self.CUI
+    def getcui(self):
+        return self.cui
     
-    def getNombre(self):
-        return self.nombre
+    def getfirst_name(self):
+        return self.first_name
 
-    def getApellido(self):
-        return self.apellido
+    def getlast_name(self):
+        return self.last_name
 
     
 
     def getData(self):
         return{
-            "cui": self.CUI,
-            "nombre": self.nombre,
-            "apellido": self.apellido
+            "cui": self.cui,
+            "first_name": self.first_name,
+            "last_name": self.last_name
         }
