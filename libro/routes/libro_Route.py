@@ -56,7 +56,42 @@ def actualizarlibro():
         else:
             return{'msg': 'Procure ingresar todos los campos correspondientes, para crear un libro'}, 400 #Error al procesar solicitud - badrequest
     except:
-        return {'msg': 'Ocurrió un error en el servidor'}, 500   #Internal Server Error
+        return {'msg': 'Ocurrió un error inesperado en el servidor'}, 500 #Internal Server Error
 
 
 
+#METODO GET - OBTENER LIBRO MEDIANTE UNA BUSQUEDA
+
+@libro.route('', methods = ['GET'])
+def buscar():
+    title = request.args.get('title')
+    year_from = request.args.get('year_from')
+    year_to = request.args.get('year_to')
+    author = request.args.get('author')
+    
+    try:
+        if(title != None):
+            booksearch = libraryDatabase.obtenerlibro_title(title)
+            return jsonify(booksearch), 200             ##Se acepta la solicitud
+        elif(author != None):
+            booksearch = libraryDatabase.obtenerlibro_author(author)
+            return jsonify(booksearch), 200          ##Se acepta la solicitud
+        elif(year_from != None and year_to != None):
+            if (int(year_from) > 0 and int(year_to) > 0):
+                if(int(year_from) < int(year_to)):
+                    booksearch = libraryDatabase.obtenerlibro_date(int(year_from), int(year_to))
+                    return jsonify(booksearch), 200      ##Se acepta la solicitud
+                else:
+                    return{'msg': 'Verificar las fechas ingresadas, la fecha '},400         #Error al procesar solicitud - badrequest 
+            else:
+                return{'msg': 'Las fechas deben tener valores lógicos'},400 #bad request
+        elif(title == None and author == None and year_from == None and year_to == None):
+            booklist = libraryDatabase.obtenerlibro()
+            return jsonify(booklist), 200             ##Se acepta la solicitud
+        else:
+            booksearch = []
+            return jsonify(booksearch), 200             ##Se acepta la solicitud
+            
+    except:
+        return {'msg': 'Ocurrió un error inesperado en el servidor'}, 500 #Internal Server Error
+    
