@@ -1,9 +1,9 @@
 from uuid import uuid4;
 
 class Prestamo():
-    def __init__(self, CUI, nombre, apellido, isbn, titulo, fechaparaprestamo, fechadevolucion):
+    def __init__(self, cui, isbn, titulo, fechaparaprestamo, fechadevolucion):
         self.uuid = uuid4()
-        self.CUI = CUI
+        self.CUI = cui
         self.nombre = nombre
         self.apellido = apellido
         self.isbn = isbn

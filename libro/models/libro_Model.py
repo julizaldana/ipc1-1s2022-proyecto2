@@ -9,9 +9,6 @@ class Libro():
         self.no_available_copies = no_available_copies
 
 
-    def agregarCopias(self, cantidadcopias):
-        if(cantidadcopias > 0):
-            self.nocopias += cantidadcopias
     
     def restarCopias(self):
         self.nocopias = self.nocopias - 1
@@ -47,7 +44,6 @@ class Libro():
             "year": self.year,
             "no_copies": self.no_copies,
             "no_available_copies": self.no_available_copies,
-
         }
 
         
