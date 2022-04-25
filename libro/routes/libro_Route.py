@@ -16,9 +16,9 @@ def crearlibro():
             if(body["isbn"] != "" and body["author"] != "" and body["title"] != "" and body["year"] != ""):          
                 if(body["year"] > 0):
                     if(body["no_copies"] > 0 and body["no_available_copies"] > 0 ):
-                        libro = Libro(int(body["isbn"]),body["author"],body["title"],int(body["year"]),int(body["no_copies"]),int(body["no_available_copies"]))
+                        libro = Libro (int(body["isbn"]), body["author"],body["title"], int(body["year"]), int(body["no_copies"]), int(body["no_available_copies"]))
                         if(libraryDatabase.agregar_libro(libro)):
-                            return{'msg': 'Libro creado existosamente'}, 201    #Petición completada - created
+                            return{'msg': 'El libro ha sido creado exitosamente'}, 201    #Petición completada - created
                         else:
                             return{'msg': 'Existe un problema con el ISBN, posiblemente ya se encuentra registrado'}, 400 #Error al procesar solicitud - badrequest
                     else:
@@ -48,7 +48,7 @@ def actualizarlibro():
                         return{'msg': 'El libro solicitado, ha sido correctamente modificado'}, 200  #Se acepta la solicitud y se modifica
                         
                     else:
-                        return{'msg': 'El  ISBN no ha sido encontrado'}, 404            #Error al procesar solicitud - badrequest 
+                        return{'msg': 'El ISBN no ha sido encontrado en el sistema'}, 404            #Error al procesar solicitud - badrequest 
                 else:
                     return{'msg': 'La fecha ingresada para modificar no es correcta'}, 406  #Error al procesar solicitud - badrequest 
             else:
