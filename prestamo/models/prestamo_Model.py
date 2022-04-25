@@ -4,8 +4,6 @@ class Prestamo():
     def __init__(self, cui, isbn, titulo, fechaparaprestamo, fechadevolucion):
         self.uuid = uuid4()
         self.CUI = cui
-        self.nombre = nombre
-        self.apellido = apellido
         self.isbn = isbn
         self.titulo = titulo
         self.fechaparaprestamo = fechaparaprestamo
@@ -13,12 +11,6 @@ class Prestamo():
 
     def getCUI(self):
         return self.CUI
-
-    def getnombre(self):
-        return self.nombre
-
-    def getapellido(self):
-        return self.apellido
 
     def getisbn(self):
         return self.isbn
@@ -39,8 +31,6 @@ class Prestamo():
         return{
             "uuid": self.uuid,
             "cui": self.CUI,
-            "nombre": self.nombre,
-            "apellido": self.apellido,
             "isbn": self.isbn,
             "fechaparaprestamo": self.fechaparaprestamo,
             "fechadevolucion": self.fechadevolucion
