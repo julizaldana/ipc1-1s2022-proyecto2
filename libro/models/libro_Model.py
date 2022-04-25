@@ -34,6 +34,14 @@ class Libro():
     def getno_available_copies(self):
         return self.no_available_copies
 
+    def setauthor(self, author):
+        self.author = author
+
+    def setautho(self, title):    
+        self.title = title
+
+    def setautho(self, title): 
+        self.year = year
 
 
     def getData(self):

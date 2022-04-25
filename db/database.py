@@ -5,7 +5,6 @@ class Database():
         self.__libros = []
         self.__isbnlibros =[]
         self.__prestamistas = []
-        self.__prestamos = []
     
 
 ## Funciones para prestamistas
@@ -30,7 +29,7 @@ class Database():
 
 ## Funciones para libros
 
-    def agregarLibro(self, libro):
+    def agregar_libro(self, libro):
         if not(libro.getisbn() in self.__isbnlibros):
             self.__libros.append(libro)
             self.__isbnlibros.append(libro.getisbn())
@@ -40,49 +39,47 @@ class Database():
 
 ## Funciones para filtrar libros
 
-    def obtenerLibroIsbn(self, isbn):
-        if isbn in self.__libros:
-            for lbrs in self.__libros:
-                if(lbrs.getisbn() == isbn):
-                    return lbrs
-        return None
+    def obtenerLibro(self):
+        librosguardado = []
+        for lbrs in self.__libros:
+            librosguardado.append(lbrs.getData())
+        return librosguardado
 
     def obtenerLibroTitulo(self, titulo):
+        librosguardado = []
         for lbrs in self.__libros:
             if(lbrs.gettitle() == titulo):
-                return lbrs
-        return None
+                librosguardado.append(lbrs.getData())
+        return librosguardado
 
     def obtenerLibroAutor(self, autor):
+        librosguardado = []
         for lbrs in self.__libros:
             if(lbrs.getauthor() == autor):
-                return lbrs
-        return None
+                librosguardado.append(lbrs.getData())
+        return librosguardado
 
 
     def obtenerLibroFechas(self, fechainicial, fechafinal):
+        librosguardado = []
         for lbrs in self.__libros:
             if(lbrs.getyear() > fechainicial and lbrs.year() < fechafinal):
-                return lbrs
-        return None
+                librosguardado.append(lbrs.getData())
+        return librosguardado
 
 
 
-    def modificarLibro(self, libro):
-        contador = 0
-        for lbrs in self.__libros:
-            if(lbrs.getisbn()==libro.getisbn()):
-                libro.agregarCopias
-                self.__libros.insert(contador,libro)
-                return True #se puede modificar libro
-            contador = contador + 1
+    def modificarLibro(self, isbn, author, title, year):
+        cont = 0
+        if int(isbn) in self.__isbnlibros:
+            for lbrs in self.__libros:
+                if(lbrs.getisbn()==isbn):
+                    self.__libros[cont].setauthor(author)
+                    self.__libros[cont].settitle(title)
+                    self.__libros[cont].setyear(year)
+                    return True #se puede modificar libro
+                cont = cont + 1 
         return False #no se puede modificar libro
-
-
-
-
-
-
 
 
 
