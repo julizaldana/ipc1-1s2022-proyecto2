@@ -37,10 +37,10 @@ class Libro():
     def setauthor(self, author):
         self.author = author
 
-    def setautho(self, title):    
+    def settitle(self, title):    
         self.title = title
 
-    def setautho(self, title): 
+    def setyear(self, year): 
         self.year = year
 
 

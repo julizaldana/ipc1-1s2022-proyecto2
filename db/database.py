@@ -13,7 +13,6 @@ class Database():
         if not(prestamista.getcui() in self.__cuiprestamista):
             self.__prestamistas.append(prestamista)
             self.__cuiprestamista.append(prestamista.getcui())
-            print(self.__prestamistas)
             return True
         return False
 
@@ -69,7 +68,7 @@ class Database():
 
 
 
-    def modificarLibro(self, isbn, author, title, year):
+    def modificar_libro(self, isbn, author, title, year):
         cont = 0
         if int(isbn) in self.__isbnlibros:
             for lbrs in self.__libros:
