@@ -17,7 +17,7 @@ class Database():
         return False
 
 
-## Funciones para filtrar libros
+## Funciones para filtrar y buscar libros
 
     def obtenerlibro(self):
         librosguardado = []
@@ -71,13 +71,6 @@ class Database():
             self.__cuiprestamista.append(prestamista.getcui())
             return True
         return False
-
-    def obtener_prestamista(self, cui):
-        if cui in self.__cuiprestamista:
-            for prestamista1 in self.__prestamistas:
-                if(prestamista1.getcui() == cui):
-                    return prestamista1
-        return None
 
 
 libraryDatabase = Database()

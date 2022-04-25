@@ -4,14 +4,6 @@ class Prestamista():
         self.last_name = last_name
         self.first_name = first_name
     
-    def prestarLibros(self):
-        global libroprestado
-        libroprestado = True
-
-    def devolverLibros(self):
-        global libroprestado
-        libroprestado = False
-
     def getcui(self):
         return self.cui
 

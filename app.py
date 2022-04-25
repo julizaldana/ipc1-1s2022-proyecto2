@@ -13,7 +13,7 @@ def index():
 
 app.register_blueprint(libro)
 app.register_blueprint(prestamista)
-##app.register_blueprint()
+
 
 if __name__ == '__main__':
     app.run(debug = True)

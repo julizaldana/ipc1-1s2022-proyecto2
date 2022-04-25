@@ -19,14 +19,19 @@ def crearlibro():
                         libro = Libro (int(body["isbn"]), body["author"],body["title"], int(body["year"]), int(body["no_copies"]), int(body["no_available_copies"]))
                         if(libraryDatabase.agregar_libro(libro)):
                             return{'msg': 'El libro ha sido creado exitosamente'}, 201    #Petición completada - created
+                            
                         else:
                             return{'msg': 'Existe un problema con el ISBN, posiblemente ya se encuentra registrado'}, 400 #Error al procesar solicitud - badrequest
+
                     else:
                         return{'msg': 'Existe un error con la cantidad de copias de los libros'}, 400 #Error al procesar solicitud - badrequest
+
                 else:
-                    return{'msg': 'Existe un error con la fecha ingresada'}, 400 #Error al procesar solicitud - badrequest        
+                    return{'msg': 'Existe un error con la fecha ingresada'}, 400 #Error al procesar solicitud - badrequest      
+
             else:
                 return{'msg': 'Procure ingresar correctamente los campos'}, 400              #Error al procesar solicitud - badrequest 
+
         else:
             return{'msg': 'Procure ingresar todos los campos correspondientes, para crear un libro'}, 400 #Error al procesar solicitud - badrequest
 
@@ -49,12 +54,16 @@ def actualizarlibro():
                         
                     else:
                         return{'msg': 'El ISBN no ha sido encontrado en el sistema'}, 404            #Error al procesar solicitud - badrequest 
+
                 else:
                     return{'msg': 'La fecha ingresada para modificar no es correcta'}, 406  #Error al procesar solicitud - badrequest 
+
             else:
                 return{'msg': 'Procure ingresar correctamente los campos'}, 400              #Error al procesar solicitud - badrequest 
+
         else:
             return{'msg': 'Procure ingresar todos los campos correspondientes, para crear un libro'}, 400 #Error al procesar solicitud - badrequest
+
     except:
         return {'msg': 'Ocurrió un error inesperado en el servidor'}, 500 #Internal Server Error
 
@@ -73,21 +82,27 @@ def buscar():
         if(title != None):
             booksearch = libraryDatabase.obtenerlibro_title(title)
             return jsonify(booksearch), 200             ##Se acepta la solicitud
+
         elif(author != None):
             booksearch = libraryDatabase.obtenerlibro_author(author)
             return jsonify(booksearch), 200          ##Se acepta la solicitud
+
         elif(year_from != None and year_to != None):
+
             if (int(year_from) > 0 and int(year_to) > 0):
+
                 if(int(year_from) < int(year_to)):
                     booksearch = libraryDatabase.obtenerlibro_date(int(year_from), int(year_to))
-                    return jsonify(booksearch), 200      ##Se acepta la solicitud
+                    return jsonify(booksearch), 200      ##Se acepta la solicitud         
                 else:
-                    return{'msg': 'Verificar las fechas ingresadas, la fecha '},400         #Error al procesar solicitud - badrequest 
+                    return{'msg': 'Verificar las fechas ingresadas, la fecha última no se puede ser mayor que la fecha inicial'}, 400         #Error al procesar solicitud - badrequest 
             else:
-                return{'msg': 'Las fechas deben tener valores lógicos'},400 #bad request
+                return{'msg': 'Ingresar valores correctos para las fechas'}, 400        #Error al procesar solicitud - badrequest 
+
         elif(title == None and author == None and year_from == None and year_to == None):
             booklist = libraryDatabase.obtenerlibro()
             return jsonify(booklist), 200             ##Se acepta la solicitud
+
         else:
             booksearch = []
             return jsonify(booksearch), 200             ##Se acepta la solicitud
